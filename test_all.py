@@ -21,6 +21,7 @@ p07 = import_module("07_producer_consumer")
 p08 = import_module("08_duplicate_file_finder")
 p09 = import_module("09_rate_limited_client")
 p10 = import_module("10_context_manager_transaction")
+p11 = import_module("11_graph_traversal")
 
 
 class TestPythonCoreLab(unittest.TestCase):
@@ -113,6 +114,33 @@ class TestPythonCoreLab(unittest.TestCase):
         except RuntimeError:
             pass
         self.assertEqual(db["account"], 100)  # Rolled back successfully
+
+    def test_11_graph_traversal(self):
+        # 1. Undirected BFS, DFS, and Shortest Path
+        g = p11.Graph(directed=False)
+        for u, v in [("A", "B"), ("A", "C"), ("B", "D"), ("C", "D")]:
+            g.add_edge(u, v)
+
+        self.assertEqual(g.bfs("A"), ["A", "B", "C", "D"])
+        self.assertEqual(g.dfs("A"), ["A", "B", "D", "C"])
+        self.assertEqual(g.shortest_path_unweighted("A", "D"), ["A", "B", "D"])
+        self.assertTrue(g.has_cycle())
+
+        # 2. Directed Acyclic Graph & Topological Sort
+        dag = p11.Graph(directed=True)
+        dag.add_edge("1", "2")
+        dag.add_edge("2", "3")
+        dag.add_edge("1", "3")
+        self.assertFalse(dag.has_cycle())
+        self.assertEqual(dag.topological_sort(), ["1", "2", "3"])
+
+        # 3. Directed Cyclic Graph
+        cyclic = p11.Graph(directed=True)
+        cyclic.add_edge("X", "Y")
+        cyclic.add_edge("Y", "Z")
+        cyclic.add_edge("Z", "X")
+        self.assertTrue(cyclic.has_cycle())
+        self.assertIsNone(cyclic.topological_sort())
 
 
 if __name__ == "__main__":

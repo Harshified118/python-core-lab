@@ -1,10 +1,10 @@
 # Python Core Lab (`python-core-lab`)
 
-> A curated collection of 10 foundational to intermediate Python programs covering data structures, algorithmic efficiency, thread concurrency, systems programming, and design patterns.
+> A curated collection of 11 foundational to intermediate Python programs covering data structures, algorithmic efficiency, thread concurrency, systems programming, and design patterns.
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Tests: Passing](https://img.shields.io/badge/Tests-10%20Passing-brightgreen.svg)]()
+[![Tests: Passing](https://img.shields.io/badge/Tests-11%20Passing-brightgreen.svg)]()
 
 ---
 
@@ -22,6 +22,7 @@
 | **08** | [`08_duplicate_file_finder.py`](./08_duplicate_file_finder.py) | Intermediate | Three-tier duplicate scanner (size grouping, 4KB partial hash, full chunked SHA-256) |
 | **09** | [`09_rate_limited_client.py`](./09_rate_limited_client.py) | Intermediate | Token Bucket rate limiter, burst handling, constant replenishment, simulated API backpressure |
 | **10** | [`10_context_manager_transaction.py`](./10_context_manager_transaction.py) | Intermediate | Class-based atomic transaction dictionary with automatic rollback on exception & `@contextmanager` |
+| **11** | [`11_graph_traversal.py`](./11_graph_traversal.py) | Basic | Adjacency list representation, BFS reachability & shortest path, DFS, cycle detection, Kahn's topological sort |
 
 ---
 
@@ -55,6 +56,7 @@ python3 07_producer_consumer.py
 python3 08_duplicate_file_finder.py
 python3 09_rate_limited_client.py
 python3 10_context_manager_transaction.py
+python3 11_graph_traversal.py
 ```
 
 ---
@@ -121,6 +123,14 @@ Implements classic network traffic shaping algorithms:
 Context managers implementing transaction isolation:
 - Class-based context manager (`__enter__` and `__exit__`) tracking state snapshots with automatic rollback upon exceptions.
 - Generator-based context managers (`@contextlib.contextmanager`) for safe temporary resource overrides.
+
+### 11. Graph Traversal & Algorithmic Foundations
+Implements graph representations and canonical traversal algorithms:
+- Adjacency list graph supporting directed and undirected configurations.
+- Breadth-First Search (BFS) for layer-wise exploration and unweighted shortest path reconstruction.
+- Depth-First Search (DFS) iterative stack traversal.
+- Cycle detection in directed graphs (recursion stack) and undirected graphs (parent tracking).
+- Topological sorting via Kahn's algorithm (indegree-based BFS) for DAG dependency resolution.
 
 ---
 
